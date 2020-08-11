@@ -15,7 +15,7 @@ textarea {
   margin: 10px 0px;
   border: none;
   overflow: auto;
-  border-bottom: solid black 5px;
+  border-bottom: solid #545149 5px;
 }
 
 .form-footer {

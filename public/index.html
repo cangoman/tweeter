@@ -46,7 +46,16 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
 
-      
+      <section class="new-tweet">
+        <form  method="POST" action="/tweets">
+          <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
+          <div class="form-footer">
+            <button type="submit">Tweet</button>
+            <output name="counter" class="counter" for="tweet-text">140</output>
+          </div>
+        </form>
+      </section>
+
       <p>
         You have so many different things placeholder text has to be able to do, and I don't believe Lorem Ipsum has the stamina. Be careful, or I will spill the beans on your placeholder text. Look at that text! Would anyone use that? Can you imagine that, the text of your next webpage?! Lorem Ispum is a choke artist. It chokes! I'm speaking with myself, number one, because I have a very good brain and I've said a lot of things.
       </p>

@@ -39,11 +39,20 @@ $(document).ready( function() {
 
   $('#submit-tweet').submit(function(event) {
     event.preventDefault();
-    $.ajax('/tweets', {method: 'POST',
-      data: $(this).serialize()})
-    .then(function(tweet) {
-      console.log('Success ');
-    });
+    const tweetLength = $('#tweet-text').val().length;
+    if (!tweetLength) {
+      alert('Your tweet is empty!');
+      return;
+    } else if (tweetLength > 140) {
+      alert('Your tweet is too long!');
+      return;
+    } else {
+      $.ajax('/tweets', {method: 'POST',
+        data: $(this).serialize()})
+      .then(function(tweet) {
+        console.log('Success ');
+      });
+    }
   });
 
   const loadTweets = function() {

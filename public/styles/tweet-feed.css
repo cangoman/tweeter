@@ -8,6 +8,7 @@
   justify-content: space-between;
   margin-top: 40px;
   padding: none;
+  filter: blur(1px);
 }
 
 article.tweet header {
@@ -31,6 +32,7 @@ article.tweet header {
 }
 
 .tweet .handle {
+  display: none;
   color: #BFBDBD;
 }
 
@@ -38,7 +40,7 @@ article.tweet header {
 .tweet-content {
   padding: 10px 30px;
   margin: 24px auto;
-  font-weight: bold;
+  font-weight: normal;
 
 }
 
@@ -61,4 +63,13 @@ article.tweet header {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+}
+
+
+#tweet-container:hover {
+  filter: drop-shadow(10px 10px 5px);
+}
+
+#tweet-container:hover .tweet .handle {
+  display: block;
 }

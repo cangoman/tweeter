@@ -7,7 +7,6 @@
 
 
  // Temporarily import the "database"
-
 const data = [
   {
     "user": {
@@ -34,8 +33,9 @@ const data = [
 
 
 $(document).ready( function() {
+  
   const createTweetElement = function(tweetData) {
-    const $tweet = `
+    return  `
     <article class="tweet">
       <header>
         <div class="username">
@@ -54,8 +54,6 @@ $(document).ready( function() {
         </div>
       </footer>
     </article> `;
-
-    return $tweet;
   };
   
   const renderTweets = function(tweets) {
@@ -66,6 +64,14 @@ $(document).ready( function() {
 
   renderTweets(data);
 
+  $('#submit-tweet').submit(function(event) {
+    event.preventDefault();
+    $.ajax('/tweets', {method: 'POST',
+      data: $(this).serialize()})
+    .then(function(tweet) {
+      console.log('Success ');
+    });
+  })
 });
 
 

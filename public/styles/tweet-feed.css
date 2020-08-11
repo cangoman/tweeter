@@ -32,7 +32,7 @@ article.tweet header {
 }
 
 .tweet .handle {
-  display: none;
+  visibility: hidden;
   color: #BFBDBD;
 }
 
@@ -71,5 +71,5 @@ article.tweet header {
 }
 
 #tweet-container:hover .tweet .handle {
-  display: block;
+  visibility: visible;
 }

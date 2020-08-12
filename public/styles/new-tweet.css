@@ -40,6 +40,7 @@ textarea {
 
 /* Desktop styles */
 @media screen and (min-width: 1024px) {
+  
   .new-tweet {
     padding: 0px 80px;
   }

@@ -1,20 +1,15 @@
-
 nav {
   background-color: #F06000;
   background-image: url("/images/45-degree-fabric-light.png");
   height: 120px;
   width: 100%;
   color: #FFFFFF;
-
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
   position: relative;
   top: 0;
   z-index: 10;
-
 }
 
 nav span {
@@ -70,14 +65,17 @@ nav:hover .bounce {
 
 /* Tablet styles */
 @media screen and (min-width: 768px) {
+  
   nav {
     position: fixed; 
   }
+
 }
 
 
 /* Desktop styles */
 @media screen and (min-width: 1024px) {
+  
   nav {
     background-image: none;
     background-color: #4056A1;

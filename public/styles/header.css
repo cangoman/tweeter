@@ -20,15 +20,16 @@ header h2 {
 
 /* Tablet styles */
 @media screen and (min-width: 768px) {
+  
   #user-header {
     margin-top: 120px;
   }
-
-
+  
 }
 
 /* Desktop styles */
 @media screen and (min-width: 1024px) {
+  
   #user-header {
     width: 60%;
     align-self: baseline;
@@ -37,6 +38,6 @@ header h2 {
     position: sticky;
     position: -webkit-sticky;
   }
-  
+
 }
 

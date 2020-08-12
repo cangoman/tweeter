@@ -1,25 +1,24 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
-$(document).ready( function() {
+/* eslint-env jquery, browser */
+
+$(document).ready(function() {
   
+  //Helper function to avoid cross site scripting
   const escape = function(str) {
     let div = document.createElement('div');
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   };
 
+  //returns an error message if there's a problem
   const validateTweet = function(tweet) {
     let error = "";
-    if (tweet.length === 0){
+    if (tweet.length === 0) {
       error = `<i class="fa fa-times-circle"></i> Your tweet is empty! Add some content and try again`;
     } else if (tweet.length > 140) {
       error = `<i class="fa fa-times-circle"></i> Your tweet is too long! Remove some content and try again`;
     }
     return error;
-  }
+  };
 
   const createTweetElement = function(tweetData) {
     return $(`
@@ -45,17 +44,9 @@ $(document).ready( function() {
   };
   
   const renderTweets = function(tweets) {
-    
-    //sort the tweets from newest to oldest
-    // tweets.sort( (a, b) => {
-    //   return b.created_at - a.created_at;
-    // });
-    
-    //Empty the container and fill it up
+    //Empty the container before filling it up
     $('#tweet-container').empty();
     for (const tweet of tweets) {
-
-      // if you use prepend => might not need to sort the tweets
       $('#tweet-container').prepend(createTweetElement(tweet));
     }
   };
@@ -64,7 +55,7 @@ $(document).ready( function() {
     $.ajax('/tweets', {method: 'GET'})
       .then(renderTweets)
       .catch(err => console.log(err.message));
-  }
+  };
 
   $('#submit-tweet').submit(function(event) {
     event.preventDefault();
@@ -76,18 +67,18 @@ $(document).ready( function() {
       $('.error').slideUp('fast');
       $.ajax('/tweets', {method: 'POST',
         data: $(this).serialize()})
-      .then(function(response) {
-        console.log(response);
-        loadTweets();
-        $('#tweet-text').val('');
-        $('.counter').val('140');
-      })
-      .catch( err => console.log(err.message)
-      );
+        .then(function(response) {
+          console.log(response);
+          loadTweets();
+          $('#tweet-text').val('');
+          $('.counter').val('140');
+        })
+        .catch(err => console.log(err.message)
+        );
     }
   });
 
-  //Function to hide/show the new tweet section
+  //Hide/show the new tweet section
   $('.nav-link').on('click', function() {
     if ($('.new-tweet').is(':visible'))
       $('.new-tweet').slideUp('slow');
@@ -95,10 +86,9 @@ $(document).ready( function() {
       $('.new-tweet').slideDown('slow');
       $('#tweet-text').focus();
     }
-  })
+  });
 
   loadTweets();
-
 });
 
 

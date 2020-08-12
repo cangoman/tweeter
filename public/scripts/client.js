@@ -52,7 +52,7 @@ $(document).ready( function() {
     // });
     
     //Empty the container and fill it up
-    // $('#tweet-container').empty();
+    $('#tweet-container').empty();
     for (const tweet of tweets) {
 
       // if you use prepend => might not need to sort the tweets
@@ -80,6 +80,7 @@ $(document).ready( function() {
         console.log(response);
         loadTweets();
         $('#tweet-text').val('');
+        $('.counter').val('140');
       })
       .catch( err => console.log(err.message)
       );

@@ -1,6 +1,7 @@
 
 nav {
-  background-color: #4056A1;
+  background-color: #F06000;
+  background-image: url("/images/45-degree-fabric-light.png");
   height: 120px;
   width: 100%;
   color: #FFFFFF;
@@ -10,7 +11,7 @@ nav {
   justify-content: space-between;
   align-items: center;
 
-  position: fixed;
+  position: relative;
   top: 0;
   z-index: 10;
 
@@ -46,11 +47,10 @@ nav div div {
   align-self: center;
 }
 
-.nav-link:hover > .bounce {
+.nav:hover, .bounce {
   animation: bounce 2s;
   animation-iteration-count: infinite;
 }
-
 
 @keyframes bounce {
   0%,
@@ -68,5 +68,19 @@ nav div div {
 }
 
 
+/* Tablet styles */
+@media screen and (min-width: 768px) {
+  nav {
+    position: fixed; 
+  }
+}
 
 
+/* Desktop styles */
+@media screen and (min-width: 1024px) {
+  nav {
+    background-image: none;
+    background-color: #4056A1;
+  }
+  
+}

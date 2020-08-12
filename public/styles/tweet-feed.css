@@ -60,13 +60,38 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  visibility: hidden;
 }
 
 
 .tweet:hover {
   filter: drop-shadow(10px 10px 5px #545149);
+  
+
 }
 
 .tweet:hover .handle {
   visibility: visible;
+}
+
+.tweet:hover .icons {
+  visibility: visible;
+}
+
+
+/* Tablet styles */
+@media screen and (min-width: 768px) {
+
+
+
+}
+
+/* Desktop styles */
+@media screen and (min-width: 1024px) {
+  
+  
+  #tweet-container {
+    padding: 0px 80px;
+  }
+  
 }

@@ -1,7 +1,9 @@
 $(document).ready(function() {
   
+  const MAX_CHARS = 140;
+
   $('#tweet-text').on('input', function() {
-    const tweetLength = 140 - $(this).val().length;
+    const tweetLength = MAX_CHARS - $(this).val().length;
     const counter = $(this).parent().find('.counter');
     counter.val(tweetLength);
 

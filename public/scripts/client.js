@@ -3,15 +3,26 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-
-
-
 $(document).ready( function() {
   
+  const escape = function(str) {
+    let div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
 
+  const validateTweet = function(tweet) {
+    let error = "";
+    if (tweet.length === 0){
+      error = `<i class="fa fa-times-circle"></i> Your tweet is empty! Add some content and try again`;
+    } else if (tweet.length > 140) {
+      error = `<i class="fa fa-times-circle"></i> Your tweet is too long! Remove some content and try again`;
+    }
+    return error;
+  }
 
   const createTweetElement = function(tweetData) {
-    const $tweet = $(`
+    return $(`
     <article class="tweet">
       <header>
         <div class="username">
@@ -30,58 +41,48 @@ $(document).ready( function() {
         </div>
       </footer>
     </article> `);
- 
-  
-    return $tweet;
 
   };
   
   const renderTweets = function(tweets) {
     
     //sort the tweets from newest to oldest
-    tweets.sort( (a, b) => {
-      return b.created_at - a.created_at;
-    });
+    // tweets.sort( (a, b) => {
+    //   return b.created_at - a.created_at;
+    // });
     
     //Empty the container and fill it up
-    $('#tweet-container').empty();
+    // $('#tweet-container').empty();
     for (const tweet of tweets) {
-      $('#tweet-container').append(createTweetElement(tweet));
+
+      // if you use prepend => might not need to sort the tweets
+      $('#tweet-container').prepend(createTweetElement(tweet));
     }
   };
 
   const loadTweets = function() {
-    $.ajax('/tweets', {method: 'GET'}).then(renderTweets);
-  }
-
-  const escape = function(str) {
-    let div = document.createElement('div');
-    div.appendChild(document.createTextNode(str));
-    return div.innerHTML;
+    $.ajax('/tweets', {method: 'GET'})
+      .then(renderTweets)
+      .catch(err => console.log(err.message));
   }
 
   $('#submit-tweet').submit(function(event) {
     event.preventDefault();
-    const tweetLength = $('#tweet-text').val().length;
-    if (!tweetLength) {
-      const error = `<i class="fa fa-times-circle"></i> Your tweet is empty! Add some content and try again`;
+    const error = validateTweet($('#tweet-text').val());
+    if (error) {
       $('.error').html(error);
       $('.error').slideDown('slow');
-      return;
-    } else if (tweetLength > 140) {
-      const error = `<i class="fa fa-times-circle"></i> Your tweet is too long! Remove some content and try again`;
-      $('.error').html(error);
-      $('.error').slideDown('slow');
-      return;
     } else {
       $('.error').slideUp('fast');
       $.ajax('/tweets', {method: 'POST',
         data: $(this).serialize()})
-      .then(function() {
+      .then(function(response) {
+        console.log(response);
         loadTweets();
         $('#tweet-text').val('');
-        console.log('Success');
-      });
+      })
+      .catch( err => console.log(err.message)
+      );
     }
   });
 
@@ -92,7 +93,6 @@ $(document).ready( function() {
     else {
       $('.new-tweet').slideDown('slow');
       $('#tweet-text').focus();
-
     }
   })
 

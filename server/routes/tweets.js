@@ -36,7 +36,8 @@ module.exports = function(DataHelpers) {
       if (err) {
         res.status(500).json({ error: err.message });
       } else {
-        res.status(201).send();
+        // you can have the tweet in the send => .send(twe)
+        res.status(201).send(tweet);
       }
     });
   });

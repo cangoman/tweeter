@@ -8,8 +8,10 @@
 
 $(document).ready( function() {
   
+
+
   const createTweetElement = function(tweetData) {
-    return  `
+    const $tweet = $(`
     <article class="tweet">
       <header>
         <div class="username">
@@ -18,7 +20,7 @@ $(document).ready( function() {
         </div>
         <div class="handle">${tweetData.user.handle}</div>
       </header>
-      <div class="tweet-content">${tweetData.content.text}</div>
+      <div class="tweet-content">${escape(tweetData.content.text)}</div>
       <footer>
         <div class="timestamp">${moment(tweetData.created_at).fromNow()}</div>
         <div class="icons"> 
@@ -27,15 +29,36 @@ $(document).ready( function() {
           <i class="fas fa-heart"></i>
         </div>
       </footer>
-    </article> `;
+    </article> `);
+ 
+  
+    return $tweet;
+
   };
   
   const renderTweets = function(tweets) {
+    
+    //sort the tweets from newest to oldest
+    tweets.sort( (a, b) => {
+      return b.created_at - a.created_at;
+    });
+    
+    //Empty the container and fill it up
+    $('#tweet-container').empty();
     for (const tweet of tweets) {
       $('#tweet-container').append(createTweetElement(tweet));
     }
   };
 
+  const loadTweets = function() {
+    $.ajax('/tweets', {method: 'GET'}).then(renderTweets);
+  }
+
+  const escape = function(str) {
+    let div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  }
 
   $('#submit-tweet').submit(function(event) {
     event.preventDefault();
@@ -49,15 +72,14 @@ $(document).ready( function() {
     } else {
       $.ajax('/tweets', {method: 'POST',
         data: $(this).serialize()})
-      .then(function(tweet) {
-        console.log('Success ');
+      .then(function() {
+        loadTweets();
+        $('#tweet-text').val('');
+        console.log('Success');
       });
     }
   });
 
-  const loadTweets = function() {
-    $.ajax('/tweets', {method: 'GET'}).then(renderTweets);
-  }
   loadTweets();
 
 });

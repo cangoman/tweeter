@@ -85,6 +85,17 @@ $(document).ready( function() {
     }
   });
 
+  //Function to hide/show the new tweet section
+  $('.nav-link').on('click', function() {
+    if ($('.new-tweet').is(':visible'))
+      $('.new-tweet').slideUp('slow');
+    else {
+      $('.new-tweet').slideDown('slow');
+      $('#tweet-text').focus();
+
+    }
+  })
+
   loadTweets();
 
 });

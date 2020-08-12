@@ -4,7 +4,7 @@
 }
 
 .tweet {
-  height: 250px;
+  height: auto;
   background-color: #FAEBD0;
   border: solid #545149 5px;
   margin-top: 40px;
@@ -35,9 +35,11 @@
 }
 
 .tweet-content {
+
   padding: 10px 30px;
   margin: 24px auto;
   font-weight: normal;
+  word-break:break-all;
 
 }
 

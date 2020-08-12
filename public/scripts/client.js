@@ -64,12 +64,17 @@ $(document).ready( function() {
     event.preventDefault();
     const tweetLength = $('#tweet-text').val().length;
     if (!tweetLength) {
-      alert('Your tweet is empty!');
+      const error = `<i class="fa fa-times-circle"></i> Your tweet is empty! Add some content and try again`;
+      $('.error').html(error);
+      $('.error').slideDown('slow');
       return;
     } else if (tweetLength > 140) {
-      alert('Your tweet is too long!');
+      const error = `<i class="fa fa-times-circle"></i> Your tweet is too long! Remove some content and try again`;
+      $('.error').html(error);
+      $('.error').slideDown('slow');
       return;
     } else {
+      $('.error').slideUp('fast');
       $.ajax('/tweets', {method: 'POST',
         data: $(this).serialize()})
       .then(function() {

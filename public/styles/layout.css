@@ -25,9 +25,18 @@ body {
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
-
  .container {
    width: 90%;
    margin: auto;
  }
+
+ .error {
+   background-color: #FFD2D2;
+   color: #D8000C;
+   border-radius: 1px;
+   padding: 7px 10px;
+   font-size: 0.8em;
+   display: none;;
+ }
+
 

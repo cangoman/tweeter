@@ -105,6 +105,10 @@
   background-color: #555;
 }
 
+.btn-visible {
+  visibility: visible;
+}
+
 @keyframes bounce {
   0%, 25%, 50%, 100% {
     transform: translateY(0);

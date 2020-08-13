@@ -40,7 +40,6 @@ $(document).ready(function() {
         </div>
       </footer>
     </article> `);
-
   };
   
   const renderTweets = function(tweets) {
@@ -80,9 +79,10 @@ $(document).ready(function() {
 
   //Hide/show the new tweet section
   $('.nav-link').on('click', function() {
-    if ($('.new-tweet').is(':visible'))
+    if ($('.new-tweet').is(':visible')) {
       $('.new-tweet').slideUp('slow');
-    else {
+      $('.error').hide(300);
+    } else {
       $('.new-tweet').slideDown('slow');
       $('#tweet-text').focus();
     }

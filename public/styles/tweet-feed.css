@@ -79,17 +79,48 @@
   visibility: visible;
 }
 
-
-/* Tablet styles */
-@media screen and (min-width: 768px) {
-
-
-
+.btn-to-top {
+  color: #FAEBD0;
+  background-color: #222;
+  background-image: url("/images/45-degree-fabric-light.png");
+  width: 55px;
+  height: 55px;
+  text-align: center;
+  border-radius: 47%;
+  margin: 30px;
+  padding-top: 14px;
+  position: fixed;
+  bottom: 30px;
+  right: 40px;
+  z-index: 1000;
+  transition: opacity .5s;
+  visibility: hidden;
 }
+.btn-to-top:hover {
+  cursor: pointer;
+  animation: bounce 2s;
+  animation-iteration-count: infinite;
+}
+.btn-to-top:active {
+  background-color: #555;
+}
+
+@keyframes bounce {
+  0%, 25%, 50%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-8px);
+  }
+}
+
+
 
 /* Desktop styles */
 @media screen and (min-width: 1024px) {
-  
   
   #tweet-container {
     padding: 0px 80px;

@@ -9,9 +9,6 @@
   align-items: center;
   justify-content: center;
   margin: auto;
-  top: 220px;
-  position:fixed;
-  
   
 }
 
@@ -38,8 +35,6 @@ header h2 {
     align-self: baseline;
     justify-self: center;
     margin: 200px 50px;
-    position: sticky;
-    position: -webkit-sticky;
   }
 
 }

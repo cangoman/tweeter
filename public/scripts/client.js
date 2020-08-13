@@ -66,8 +66,7 @@ $(document).ready(function() {
       $('.error').slideUp('fast');
       $.ajax('/tweets', {method: 'POST',
         data: $(this).serialize()})
-        .then(function(response) {
-          console.log(response);
+        .then(function() {
           loadTweets();
           $('#tweet-text').val('');
           $('.counter').val('140');

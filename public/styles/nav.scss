@@ -1,5 +1,9 @@
+$primary-color:  #F06000;
+$nav-font: 'Bungee', 'sans-serif';
+
+
 nav {
-  background-color: #F06000;
+  background-color: $primary-color;
   background-image: url("/images/45-degree-fabric-light.png");
   height: 120px;
   width: 100%;
@@ -13,7 +17,7 @@ nav {
 }
 
 nav span {
-  font-family: "Bungee", "sans-serif";
+  font-family:  $nav-font;
   font-size: 1.5em;
   margin: 1.5em;
 }
@@ -48,7 +52,10 @@ nav:hover .bounce {
 }
 
 @keyframes bounce {
-  0%, 25%, 50%, 100% {
+  0%,
+  25%,
+  50%,
+  100% {
     transform: translateY(0);
   }
   40% {
@@ -58,18 +65,22 @@ nav:hover .bounce {
     transform: translateY(-8px);
   }
 }
+
+
 /* Tablet styles */
 @media screen and (min-width: 768px) {
+  
   nav {
-    position: fixed;
+    position: fixed; 
   }
+
 }
 /* Desktop styles */
 @media screen and (min-width: 1024px) {
+  
   nav {
     background-image: none;
     background-color: #4056A1;
   }
+  
 }
-
-/*# sourceMappingURL=nav.css.map */

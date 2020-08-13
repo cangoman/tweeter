@@ -40,6 +40,22 @@ body {
  }
 
 
+ .btn-container {
+   float: right;
+  width: 50px;
+  height: 50px;
+  border: solid black 2px;
+  border-radius: 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   
+ }
+ .scroll-button {
+
+ }
+
+
 
 /* Desktop styles */
 @media screen and (min-width: 1024px) {
